@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Round 2 Results</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ✅ Smooth transition effect */
+        body {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Results</h1>
+
+    <!-- Round 1 Results -->
+    <div id="round1-results">
+        <h2>Round 1 Results</h2>
+        <p>You got <span id="score1"></span> out of 2 correct.</p>
+        <p>You provided <span id="negativeScore1"></span> toxic leadership answers.</p>
+    </div>
+
+    <hr> <!-- Clean separation -->
+
+    <!-- Round 2 Results -->
+    <div id="round2-results">
+        <h2>Round 2 Results</h2>
+        <p>You got <span id="score2"></span> out of 4 correct.</p>
+        <p>You provided <span id="negativeScore2"></span> toxic leadership answers.</p>
+    </div>
+
+    <hr> <!-- Clean separation -->
+
+    <!-- Total Results -->
+    <div id="total-results">
+        <h2>Total Results</h2>
+        <p>Total Score: <span id="totalScore"></span> out of 6 correct.</p>
+        <p>Total Toxic Answers: <span id="totalToxic"></span></p>
+    </div>
+
+    <br><br>
+
+    <button onclick="goBackToMenu()">Return to Main Menu</button>
+
+    <!-- ✅ LINKED CONFETTI2.JS -->
+    <script src="confetti2.js"></script>
+    <script>
+        // ✅ Smooth transition on page load
+        window.onload = function() {
+            document.body.classList.add('loaded');
+        };
+
+        // ✅ Retrieve scores from localStorage
+        const score1 = parseInt(localStorage.getItem('score')) || 0;
+        const negativeScore1 = parseInt(localStorage.getItem('negativeScore')) || 0;
+        const score2 = parseInt(localStorage.getItem('score2')) || 0;
+        const negativeScore2 = parseInt(localStorage.getItem('negativeScore2')) || 0;
+
+        // ✅ Calculate the total score and toxic answers
+        const totalScore = score1 + score2;
+        const totalToxic = negativeScore1 + negativeScore2;
+
+        // ✅ Populate the spans with scores
+        document.getElementById('score1').textContent = score1;
+        document.getElementById('negativeScore1').textContent = negativeScore1;
+        document.getElementById('score2').textContent = score2;
+        document.getElementById('negativeScore2').textContent = negativeScore2;
+        document.getElementById('totalScore').textContent = totalScore;
+        document.getElementById('totalToxic').textContent = totalToxic;
+
+        // ✅ Function to go back to main menu
+        function goBackToMenu() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

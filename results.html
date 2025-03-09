@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <h1>Game Results</h1>
+
+        <div id="results">
+            <p>✅ You got <span id="score"></span> out of 2 correct.</p>
+            <p>You provided <span id="negativeScore"></span> toxic leadership answers.</p>
+        </div>
+
+        <button onclick="goToNextRound()">Proceed to Round 2</button>
+    </div>
+
+    <script src="script/confetti.js"></script>
+    <script>
+        const score = parseInt(localStorage.getItem('score')) || 0;
+        const negativeScore = parseInt(localStorage.getItem('negativeScore')) || 0;
+
+        document.getElementById('score').textContent = score;
+        document.getElementById('negativeScore').textContent = negativeScore;
+
+        // ✅ Trigger Confetti if score is perfect
+        if (score === 2) {
+            startConfetti();
+        }
+
+        function goToNextRound() {
+            window.location.href = 'dragndrop2.html';
+        }
+    </script>
+</body>
+</html>
+

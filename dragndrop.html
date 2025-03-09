@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete the Sentences</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/pixel-8-bit-number-eight-or-numeral-vector-47475447.jpg">
+</head>
+<body>
+<div class="page">
+    <h2>Complete the Sentences</h2>
+    <p>Drag the correct words into the blanks.</p>
+
+   
+    <div class="sentence">
+       (1) A mentor leader <div class="blank" ondrop="drop(event)" ondragover="allowDrop(event)"></div> the growth of their team.
+    </div>
+
+   
+    <div class="sentence">
+         (2) They <div class="blank" ondrop="drop(event)" ondragover="allowDrop(event)"></div> support and guidance to everyone.
+    </div>
+
+    <!-- Drag Area (Words) -->
+    <div class="drag-area">
+        <div class="word" draggable="true" ondragstart="drag(event)" id="builds">builds</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="encourage">encourage</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="ignores">ignores</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="demotivates">demotivates</div>
+    </div>
+
+    <button onclick="submitGame()">Submit Answer</button>
+</div>
+
+<script src="script/script.js"></script>
+</body>
+</html>

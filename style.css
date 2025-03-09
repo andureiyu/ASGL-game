@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=DM+Serif+Text:ital@0;1&family=Martian+Mono:wght@100..800&family=Nabla&family=Pixelify+Sans:wght@400..700&family=Quicksand:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=DM+Serif+Text:ital@0;1&family=Martian+Mono:wght@100..800&family=Nabla&family=Pixelify+Sans:wght@400..700&family=Quicksand:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&family=VT323&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/*index.css*/
+/*index.css*/
+/*index.css*/
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #722dab;
+    margin: 0;
+    padding: 0;
+}
+
+/* Page container */
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Headings */
+h1, h2, h3, p {
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: lighter;
+}
+
+/* Fade-in effect */
+.page {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SENTENCES (with blanks) */
+.sentence {
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 2;
+    text-align: left;
+    max-width: 600px;
+}
+
+/* THE BLANKS THAT HOLD THE WORDS */
+.blank {
+    border-bottom: 2px solid #bbb;
+    width: 120px;
+    height: 30px;
+    background-color: transparent;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: none;
+    font-weight: bold;
+    color: #333;
+    margin: 0 5px;
+    vertical-align: middle;
+    position: relative;
+}
+
+/* LOCK THE WORD INSIDE THE BLANK */
+.blank div {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    color: yellow;
+    box-shadow: none;
+    padding: 0;
+    position: absolute;
+}
+
+/* REMOVE THE GLITCH GREEN LINE */
+.blank:has(div) {
+    border-bottom: 2px solid #4CAF50;
+    transition: all 0.3s;
+}
+
+/* DROP AREA CONTAINER */
+.drag-area {
+    background-color: #f9f9f9;
+    border: 2px dashed #aaa;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+/* WORD STYLE (WHEN DRAGGING) */
+.word {
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    background-color: #ffffff;
+    margin: 5px;
+    cursor: grab;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* MAKE WORD FEEL LIKE IT LOCKED IN PLACE */
+.blank div:active {
+    transform: scale(1.02);
+}
+
+/* REMOVE FLOATING GLITCH EFFECT */
+.word:active {
+    transform: scale(1.05);
+}
+
+/* BUTTON STYLE */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: lighter;
+}
+
+/* BUTTON HOVER EFFECT */
+button:hover {
+    background-color: #3e8e41;
+    transform: scale(1.05);
+}
+
+/* MAKE THE WORD FEEL LIKE PART OF THE SENTENCE */
+.blank div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+/* Prevent overlap and blocking of sentence */
+.sentence {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 10px;
+    color: white;
+}
+
+/* FINAL SMALL FIX */
+.blank:empty {
+    border-bottom: 2px dashed #aaa;
+}
+
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.confetti {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
