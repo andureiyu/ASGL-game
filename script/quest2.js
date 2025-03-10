@@ -2,18 +2,19 @@ const words = document.querySelectorAll('.word');
 const blanks = document.querySelectorAll('.blank');
 const submitButton = document.querySelector('button');
 
+// Correct and Toxic Answers
 const correctAnswers = [
-    ["guide", "empower"], // Sentence 1 correct answers
-    ["mentor", "understand"], // Sentence 2 correct answers
-    ["develop", "nurture"], // Sentence 3 correct answers
-    ["lead", "inspire"] // Sentence 4 correct answers
+    ["guide", "empower"], // Sentence 1
+    ["mentor", "understand"], // Sentence 2
+    ["develop", "nurture"], // Sentence 3
+    ["lead", "inspire"] // Sentence 4
 ];
 
 const toxicAnswers = [
-    ["ignore", "discourage"], // Sentence 1 toxic answers
-    ["command", "criticize"], // Sentence 2 toxic answers
-    ["hinder", "neglect"], // Sentence 3 toxic answers
-    ["dominate", "force"] // Sentence 4 toxic answers
+    ["ignore", "discourage"], // Sentence 1
+    ["command", "criticize"], // Sentence 2
+    ["hinder", "neglect"], // Sentence 3
+    ["dominate", "force"] // Sentence 4
 ];
 
 // Handle dragging the word
@@ -25,9 +26,7 @@ words.forEach(word => {
 
 // Handle dropping the word
 blanks.forEach(blank => {
-    blank.addEventListener('dragover', (e) => {
-        e.preventDefault();
-    });
+    blank.addEventListener('dragover', (e) => e.preventDefault());
 
     blank.addEventListener('drop', (e) => {
         e.preventDefault();
@@ -48,32 +47,32 @@ blanks.forEach(blank => {
     });
 });
 
-// Submit answer and calculate score
+// ✅ Submit Answer and Accurately Calculate Score
 submitButton.addEventListener('click', () => {
     let score2 = 0;
     let negativeScore2 = 0;
-    const userAnswers2 = [];
 
+    // ✅ This will now track the user's answers
     blanks.forEach((blank, index) => {
         if (blank.firstChild) {
-            const userWord = blank.firstChild.textContent.trim();
-            userAnswers2.push(userWord);
+            const userWord = blank.firstChild.textContent.trim().toLowerCase();
 
+            // ✅ If the word is correct, add score
             if (correctAnswers[index].includes(userWord)) {
                 score2++;
-            } else if (toxicAnswers[index].includes(userWord)) {
+            }
+
+            // ✅ If the word is toxic, add negative score
+            else if (toxicAnswers[index].includes(userWord)) {
                 negativeScore2++;
             }
-        } else {
-            userAnswers2.push("");
         }
     });
 
-    // ✅ FIXED: Properly store the Round 2 score now!
+    // ✅ Save Scores to LocalStorage
     localStorage.setItem('score2', score2);
     localStorage.setItem('negativeScore2', negativeScore2);
-    localStorage.setItem('userAnswers2', JSON.stringify(userAnswers2));
 
-    // ✅ Redirect to results2.html
+    // ✅ Redirect to Results 2
     window.location.href = 'results2.html';
 });

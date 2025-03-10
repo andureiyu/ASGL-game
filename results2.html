@@ -20,25 +20,25 @@
 <body>
     <h1>Game Results</h1>
 
-    <!-- Round 1 Results -->
+    <!-- ✅ Round 1 Results -->
     <div id="round1-results">
         <h2>Round 1 Results</h2>
         <p>You got <span id="score1"></span> out of 2 correct.</p>
         <p>You provided <span id="negativeScore1"></span> toxic leadership answers.</p>
     </div>
 
-    <hr> <!-- Clean separation -->
+    <hr>
 
-    <!-- Round 2 Results -->
+    <!-- ✅ Round 2 Results -->
     <div id="round2-results">
         <h2>Round 2 Results</h2>
         <p>You got <span id="score2"></span> out of 4 correct.</p>
         <p>You provided <span id="negativeScore2"></span> toxic leadership answers.</p>
     </div>
 
-    <hr> <!-- Clean separation -->
+    <hr>
 
-    <!-- Total Results -->
+    <!-- ✅ Total Results -->
     <div id="total-results">
         <h2>Total Results</h2>
         <p>Total Score: <span id="totalScore"></span> out of 6 correct.</p>
@@ -49,10 +49,12 @@
 
     <button onclick="goBackToMenu()">Return to Main Menu</button>
 
-    <!-- ✅ LINKED CONFETTI2.JS -->
+   
+    <script src="ques2.js"></script>  
     <script src="confetti2.js"></script>
+    
     <script>
-        // ✅ Smooth transition on page load
+        // ✅ Smooth transition effect
         window.onload = function() {
             document.body.classList.add('loaded');
         };
@@ -67,7 +69,7 @@
         const totalScore = score1 + score2;
         const totalToxic = negativeScore1 + negativeScore2;
 
-        // ✅ Populate the spans with scores
+        // ✅ Populate the scores in the spans
         document.getElementById('score1').textContent = score1;
         document.getElementById('negativeScore1').textContent = negativeScore1;
         document.getElementById('score2').textContent = score2;
@@ -75,7 +77,12 @@
         document.getElementById('totalScore').textContent = totalScore;
         document.getElementById('totalToxic').textContent = totalToxic;
 
-        // ✅ Function to go back to main menu
+        // ✅ Trigger Confetti if Perfect Score in Round 2
+        if (score2 === 4) {
+            startConfetti2();
+        }
+
+        // ✅ Function to go back to the main menu
         function goBackToMenu() {
             localStorage.clear();
             window.location.href = 'index.html';

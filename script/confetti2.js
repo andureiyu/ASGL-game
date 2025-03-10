@@ -3,7 +3,7 @@ function startConfetti2() {
     confettiContainer.className = 'confetti-container';
     document.body.appendChild(confettiContainer);
 
-    function createConfetti() {
+    function createConfetti2() {
         for (let i = 0; i < 100; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
@@ -18,9 +18,8 @@ function startConfetti2() {
         }
     }
 
-    // ✅ Start confetti instantly when the page loads
-    createConfetti();
-    setInterval(createConfetti, 5000);
+    createConfetti2();
+    setInterval(createConfetti2, 5000);
 }
 
 function getRandomColor() {
@@ -29,6 +28,10 @@ function getRandomColor() {
 }
 
 
-window.addEventListener('load', function() {
-    startConfetti2();
-});
+window.onload = function() {
+    const score = parseInt(localStorage.getItem('score')) || 0;
+
+    if (score == 4) {
+        startConfetti2();
+    }
+};
